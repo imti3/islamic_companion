@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolbarStyle"
+        android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/biko_bold_700"
+            android:gravity="center"
+            android:text="ভেভেলপার স্বম্মন্ধে জানুন"
+            android:textColor="@color/grey"
+            android:textSize="18dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/my"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
+
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:textColor="#000C4C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="পরিকল্পনা ও বাস্তবায়ন"
+        android:fontFamily="@font/roboto_medium" />
+    <View
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"/>
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:textSize="17dp"
+        android:textColor="#025705"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="মোঃ ইমতিয়াজুল ইসলাম"
+        android:fontFamily="@font/roboto_regular" />
+    <TextView
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center"
+        android:textSize="17dp"
+        android:textColor="#05599C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="কম্পিউটার ইঞ্জিনিয়ার এবং এপস ডেভেলপার"
+        android:fontFamily="@font/roboto_regular" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border3"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="যোগাযোগ করুন"
+            android:textSize="17dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="#F80909"
+            />
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/ltgray"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/wapp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/whatsapp"
+                />
+            <ImageButton
+                android:id="@+id/fb"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/fb"
+                />
+            <ImageButton
+                android:id="@+id/mail"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/gmail"
+                />
+            <ImageButton
+                android:id="@+id/call"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/call_pr"
+                />
+            <ImageButton
+                android:id="@+id/group"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+
+                android:background="@drawable/group"
+                />
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border3"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#37B8F3"
+            android:fontFamily="@font/kingthings_exeter"
+            android:textSize="18dp"
+            android:text="আসসালামুআলাইকুম প্রিয় ইউজার এপসটি ইন্সটল করার জন্য আপনাকে ধন্যবাদ । এটি সম্পুর্ণ নিজ চেষ্টায় তৈরী ফ্রি একটি এপস যেখানে আপনি ফ্রিতে সকল ফিচার পাচ্ছেন । নতুন কোন ফিচার পেতে চাইলে কিংবা এপসে কোন সমস্যা পেলে এখন ই যোগাযোগ করুন আমার সাথে  আপনার মুল্যবান মতামত নিয়েই এপসটিকে আরো ইম্প্রুভ করা হবে ইনশাআল্লাহ "
+
+            />
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

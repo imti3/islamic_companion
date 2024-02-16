@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeb"
+        android:title="হোম"
+        android:icon="@drawable/homeb"
+        />
+    <item
+        android:id="@+id/namajb"
+        android:title="নামাজের সময়"
+        android:icon="@drawable/timeb"
+        />
+    <item
+        android:id="@+id/duab"
+        android:title="দোয়া"
+        android:icon="@drawable/dua_icon"
+        />
+    <item
+        android:id="@+id/tasibhb"
+        android:title="তসবীহ"
+        android:icon="@drawable/tasb"
+        />
+
+
+</menu>
