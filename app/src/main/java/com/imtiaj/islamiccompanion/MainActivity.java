@@ -957,11 +957,19 @@ switch (item.getItemId()){
         alarmIntent.putExtra("content", content);
 
         // Create a PendingIntent for the alarm
-        PendingIntent pendingIntent;
+        PendingIntent pendingIntent ;
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
             pendingIntent = PendingIntent.getBroadcast(context, uniqueId++, alarmIntent, PendingIntent.FLAG_IMMUTABLE);
         } else {
             pendingIntent = PendingIntent.getBroadcast(context, uniqueId++, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
+
+
+        if (pendingIntent != null) {
+            // Alarm is already set, no need to set it again
+            //Toast.makeText(context, "Alarm is already set", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         // Get an instance of AlarmManager
@@ -978,10 +986,10 @@ switch (item.getItemId()){
             }
 
             // Show a Toast message indicating that the alarm is set
-            Toast.makeText(context, "Alarm set successfully", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(context, "Alarm set successfully", Toast.LENGTH_SHORT).show();
         } else {
             // Show a Toast message indicating that there was an error setting the alarm
-            Toast.makeText(context, "Failed to set alarm", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Failed to set alarm", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -1084,18 +1092,7 @@ switch (item.getItemId()){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.SCHEDULE_EXACT_ALARM) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.SCHEDULE_EXACT_ALARM }, requestCode);
 
-            if(preferences.getString("fajr",null)!=null){
 
-
-                try{
-
-                    startPrayerTimeChecker();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-
-
-            }
 
 
 
@@ -1122,6 +1119,8 @@ switch (item.getItemId()){
         }
         this.tvNextPrayer.setText("--:-- --");
         this.tvAfterPrayer.setText("--:-- --");
+
+
         loc=prayerSharedPreference.getLocation();
         this.tvloca.setText(loc);
         this.llLoadingData.setVisibility(View.VISIBLE);
@@ -1133,6 +1132,22 @@ switch (item.getItemId()){
                 MainActivity.this.getPrayerData();
             }
         }, 1000L);
+
+        if(preferences.getString("fajr",null)!=null){
+
+
+            try{
+
+                startPrayerTimeChecker();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+
+        }
+
+
+
     }
 
     public void getPrayerData() {
@@ -1256,6 +1271,7 @@ switch (item.getItemId()){
         btnAllPrayer.setVisibility(View.GONE);
         btnlocate.setVisibility(View.GONE);
         Toast.makeText(this, "Permission is denied!", Toast.LENGTH_SHORT).show();
+
     }
 
     public static boolean isLocationEnabled(Context context) {

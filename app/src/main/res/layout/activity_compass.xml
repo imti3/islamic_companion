@@ -124,7 +124,7 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:fontFamily="@font/biko_regular_400"
-                                            android:text="কম্পাস স্থির হবা পর্যন্ত অপেক্ষা করুন"
+                                            android:text="কম্পাস স্থির হওয়া পর্যন্ত অপেক্ষা করুন"
                                             android:textColor="@color/grey" />
                                     </LinearLayout>
                                 </LinearLayout>
