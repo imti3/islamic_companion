@@ -7,6 +7,7 @@
 
     android:layout_margin="10dp"
     android:orientation="horizontal"
+
     >
 
     <LinearLayout
@@ -20,7 +21,8 @@ android:background="#F8EDDD"
 
     <TextView
         android:fontFamily="@font/roboto_bold"
-        android:textSize="20sp"
+        android:textSize="15sp"
+        android:paddingRight="5dp"
         android:textColor="@color/grey"
         android:id="@+id/cdate"
         android:text="24-01-2024"
@@ -32,20 +34,20 @@ android:background="#F8EDDD"
             android:layout_height="wrap_content">
 
             <TextView
-                android:textColor="@color/grey"
-                android:fontFamily="@font/roboto_bold"
-                android:textSize="18sp"
                 android:id="@+id/week"
-                android:text="Friday"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Friday"
+                android:textColor="@color/grey"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <TextView
             android:textColor="@color/grey"
             android:fontFamily="@font/roboto_bold"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:id="@+id/hijri"
             android:text="14-06-1445"
             android:layout_width="wrap_content"
@@ -58,14 +60,14 @@ android:background="#F8EDDD"
     <TextView
         android:fontFamily="@font/roboto_bold"
         android:textColor="@color/grey"
-        android:textSize="18sp"
+        android:textSize="12sp"
         android:text="সুর্যাস্তঃ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
         <TextView
             android:textColor="@color/grey"
             android:fontFamily="@font/roboto_bold"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:id="@+id/sunset"
             android:padding="5dp"
             android:text="০৫ঃ০০"
@@ -80,14 +82,14 @@ android:background="#F8EDDD"
             <TextView
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/grey"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 android:text="সুর্যোদয়ঃ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         <TextView
             android:fontFamily="@font/roboto_bold"
             android:textColor="@color/grey"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:id="@+id/sunrise"
             android:padding="5dp"
             android:text="০৫ঃ০০"
@@ -100,6 +102,7 @@ android:background="#F8EDDD"
 
 
         <LinearLayout
+            android:paddingRight="5dp"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:background="#D7DDD8"
@@ -113,7 +116,7 @@ android:background="#F8EDDD"
                 <TextView
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="@color/grey"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:layout_marginLeft="5dp"
                     android:text="সেহরি শেষঃ"
                     android:layout_width="wrap_content"
@@ -121,10 +124,11 @@ android:background="#F8EDDD"
                 <TextView
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="@color/grey"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:id="@+id/sehri"
                     android:padding="5dp"
                     android:text="০৫ঃ০০"
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -136,14 +140,14 @@ android:background="#F8EDDD"
                 <TextView
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="@color/grey"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:text="ইফতার শুরুঃ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="@color/grey"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:id="@+id/ifter"
                     android:padding="5dp"
                     android:text="০৫ঃ০০"
@@ -171,6 +175,7 @@ android:background="#F8EDDD"
 
 
     <LinearLayout
+        android:paddingLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
@@ -188,7 +193,7 @@ android:background="#F8EDDD"
             <TextView
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/grey"
-                android:textSize="18sp"
+                android:textSize="13sp"
                 android:layout_marginLeft="10dp"
                 android:text="ফজরঃ "
                 android:layout_width="wrap_content"
@@ -200,7 +205,7 @@ android:background="#F8EDDD"
             android:id="@+id/fajr1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:maxLines="1"
             android:ellipsize="end"
             android:textStyle="bold"
@@ -215,7 +220,7 @@ android:background="#F8EDDD"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/grey"
                 android:layout_marginLeft="10dp"
-                android:textSize="18sp"
+                android:textSize="13sp"
                 android:text="যোহরঃ "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -226,7 +231,7 @@ android:background="#F8EDDD"
             android:id="@+id/dohr1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:maxLines="1"
             android:ellipsize="end"
             android:textStyle="bold"
@@ -239,7 +244,7 @@ android:background="#F8EDDD"
             <TextView
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/grey"
-                android:textSize="18sp"
+                android:textSize="13sp"
                 android:layout_marginLeft="10dp"
                 android:text="আসরঃ "
                 android:layout_width="wrap_content"
@@ -250,7 +255,7 @@ android:background="#F8EDDD"
             android:id="@+id/asr1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:maxLines="1"
             android:ellipsize="end"
             android:textStyle="bold"
@@ -261,74 +266,80 @@ android:background="#F8EDDD"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/grey"
-                android:textSize="18sp"
-                android:text="মাগরিবঃ "
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="@color/grey"
-            android:fontFamily="@font/roboto_bold"
-            android:id="@+id/magrib1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textStyle="bold"
-            android:text="০৬ঃ০০" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="মাগরিবঃ "
+                android:textColor="@color/grey"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/magrib1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_bold"
+                android:maxLines="1"
+                android:text="০৬ঃ০০"
+                android:textColor="@color/grey"
+                android:textSize="13sp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/grey"
-                android:textSize="18sp"
-                android:layout_marginLeft="10dp"
-                android:text="এশাঃ "
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        <TextView
-            android:textColor="@color/grey"
-            android:fontFamily="@font/roboto_bold"
-            android:id="@+id/isha1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textStyle="bold"
-            android:text="০৮ঃ০০" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="এশাঃ "
+                android:textColor="@color/grey"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/isha1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_bold"
+                android:maxLines="1"
+                android:text="০৮ঃ০০"
+                android:textColor="@color/grey"
+                android:textSize="13sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/grey"
-                android:textSize="18sp"
-                android:layout_marginLeft="10dp"
-                android:text="তাহাজ্জুদঃ "
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textColor="@color/grey"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:fontFamily="@font/roboto_bold"
+                android:text="তাহাজ্জুদঃ "
+                android:textColor="@color/grey"
+                android:textSize="13sp" />
+
+            <TextView
                 android:id="@+id/tahaj"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:maxLines="1"
                 android:ellipsize="end"
-                android:textStyle="bold"
-                android:text="০৮ঃ০০" />
+                android:fontFamily="@font/roboto_bold"
+                android:maxLines="1"
+                android:text="০৮ঃ০০"
+                android:textColor="@color/grey"
+                android:textSize="13sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 

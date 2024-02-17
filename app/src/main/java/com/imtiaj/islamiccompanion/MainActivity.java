@@ -1,5 +1,6 @@
 package com.imtiaj.islamiccompanion;
 
+import android.Manifest;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.Dialog;
@@ -10,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioAttributes;
@@ -164,14 +166,15 @@ set1=(TextView)findViewById(R.id.set);
 tvsehri=(TextView) findViewById(R.id.sehri);
 tviftar=(TextView) findViewById(R.id.ifter);
 tvloca=(TextView) findViewById(R.id.tvloc111);
-        createNotificationChannel();
 
 
 
+            try {
+                createNotificationChannel();
 
-
-
-
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
 
         //startPrayerTimeChecker();
@@ -347,11 +350,7 @@ else{
         //notify
 
 
-if(preferences.getString("fajr",null)!=null){
 
-    startPrayerTimeChecker();
-
-}
 
 
 
@@ -939,6 +938,7 @@ switch (item.getItemId()){
 
             // Set the alarm
             setAlarm(context, alarmTimeInMillis, title, content);
+
         }
     }
 
@@ -957,7 +957,12 @@ switch (item.getItemId()){
         alarmIntent.putExtra("content", content);
 
         // Create a PendingIntent for the alarm
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, uniqueId++, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            pendingIntent = PendingIntent.getBroadcast(context, uniqueId++, alarmIntent, PendingIntent.FLAG_IMMUTABLE);
+        } else {
+            pendingIntent = PendingIntent.getBroadcast(context, uniqueId++, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
 
         // Get an instance of AlarmManager
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -971,10 +976,17 @@ switch (item.getItemId()){
             } else {
                 alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTimeInMillis, pendingIntent);
             }
+
+            // Show a Toast message indicating that the alarm is set
+            Toast.makeText(context, "Alarm set successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            // Show a Toast message indicating that there was an error setting the alarm
+            Toast.makeText(context, "Failed to set alarm", Toast.LENGTH_SHORT).show();
         }
-
-
     }
+
+
+
 
     private void createNotificationChannel() {
 
@@ -1027,6 +1039,10 @@ switch (item.getItemId()){
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
+
+
+
         // Handle in-app update result
         if (requestCode == REQUEST_CODE1) {
             Toast.makeText(MainActivity.this, "Start Download", Toast.LENGTH_SHORT).show();
@@ -1063,6 +1079,29 @@ switch (item.getItemId()){
                 showDialog();
             }
         }
+
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SCHEDULE_EXACT_ALARM) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.SCHEDULE_EXACT_ALARM }, requestCode);
+
+            if(preferences.getString("fajr",null)!=null){
+
+
+                try{
+
+                    startPrayerTimeChecker();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+
+            }
+
+
+
+        }
+
+
     }
 
 
@@ -1083,6 +1122,8 @@ switch (item.getItemId()){
         }
         this.tvNextPrayer.setText("--:-- --");
         this.tvAfterPrayer.setText("--:-- --");
+        loc=prayerSharedPreference.getLocation();
+        this.tvloca.setText(loc);
         this.llLoadingData.setVisibility(View.VISIBLE);
         this.llPrayerTime.setVisibility(View.GONE);
         new Handler().postDelayed(new Runnable() {
@@ -1099,6 +1140,7 @@ switch (item.getItemId()){
         this.llPrayerTime.setVisibility(View.VISIBLE);
         double parseDouble = Double.parseDouble(this.prayerSharedPreference.getLatitude());
         double parseDouble2 = Double.parseDouble(this.prayerSharedPreference.getLongitude());
+
         double timeZone = getTimeZone();
 
         PrayerTime prayerTime = new PrayerTime();
@@ -1212,6 +1254,7 @@ switch (item.getItemId()){
             return;
         }
         btnAllPrayer.setVisibility(View.GONE);
+        btnlocate.setVisibility(View.GONE);
         Toast.makeText(this, "Permission is denied!", Toast.LENGTH_SHORT).show();
     }
 
