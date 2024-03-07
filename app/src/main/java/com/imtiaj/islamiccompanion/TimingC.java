@@ -435,7 +435,7 @@ this.spy.setSelection(position);
 
 
 
-        String url="https://api.aladhan.com/v1/calendar/"+year+"/"+month+"?latitude="+latitude+"&longitude="+longitude+"&method=1";
+        String url="https://api.aladhan.com/v1/calendar/"+year+"/"+month+"?latitude="+latitude+"&longitude="+longitude;
         Log.d("url ",url);
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -712,7 +712,7 @@ this.spy.setSelection(position);
 
 
 
-        String url="https://api.aladhan.com/v1/calendar/"+year+"/"+month+"?latitude="+latitude+"&longitude="+longitude+"&method=1";
+        String url="https://api.aladhan.com/v1/calendar/"+year+"/"+month+"?latitude="+latitude+"&longitude="+longitude;
         Log.d("url ",url);
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override

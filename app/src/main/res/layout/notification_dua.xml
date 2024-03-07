@@ -13,7 +13,7 @@
 
         <TextView
             android:textSize="16dp"
-            android:textColor="@color/grey"
+            android:textColor="#032AFF"
             android:id="@+id/tvDua"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             android:fontFamily="@font/biko_regular_400" />
 
         <TextView
-            android:textColor="@color/grey"
+            android:textColor="#032AFF"
             android:id="@+id/tvDuaTranslation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

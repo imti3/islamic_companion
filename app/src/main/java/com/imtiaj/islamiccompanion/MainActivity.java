@@ -136,7 +136,7 @@ TextView tviftar,tvloca;
     TextView tvAfterPrayer;
     TextView tvNextPrayer;
 
-    String loc,fajr,dhuhr,asr,magrib,isha,sleep="23:00";
+    String loc,fajr,dhuhr,asr,magrib,isha,sleep="21:40";
 
 
 
@@ -226,14 +226,14 @@ else{
                 double latitude = Double.parseDouble(latitudeString);
                 double longitude = Double.parseDouble(longitudeString);
 
-                int method = 1;
+                //int method = 1;
                 Calendar calendarapi = Calendar.getInstance();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
                 String date = dateFormat.format(calendarapi.getTime());
 
                 // Make the API request to retrieve sunset data
                 SunriseSunsetApiClient.getSunriseSunsetService()
-                        .getSunriseSunset(date, latitude, longitude, method)
+                        .getSunriseSunset(date, latitude, longitude)
                         .enqueue(new Callback<SunriseSunsetResponse>() {
                             @Override
                             public void onResponse(Call<SunriseSunsetResponse> call, Response<SunriseSunsetResponse> response) {
@@ -960,29 +960,38 @@ switch (item.getItemId()){
         PendingIntent pendingIntent ;
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-            pendingIntent = PendingIntent.getBroadcast(context, uniqueId++, alarmIntent, PendingIntent.FLAG_IMMUTABLE);
+            pendingIntent = PendingIntent.getBroadcast(context, uniqueId++, alarmIntent, PendingIntent.FLAG_MUTABLE);
         } else {
             pendingIntent = PendingIntent.getBroadcast(context, uniqueId++, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         }
 
 
-        if (pendingIntent != null) {
-            // Alarm is already set, no need to set it again
-            //Toast.makeText(context, "Alarm is already set", Toast.LENGTH_SHORT).show();
-            return;
-        }
+
 
         // Get an instance of AlarmManager
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         // Set the alarm
         if (alarmManager != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (!alarmManager.canScheduleExactAlarms()) {
+                    Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                    context.startActivity(intent);
+                }
+
+                 else{
+
+                // Use setExactAndAllowWhileIdle for Android 14 and above
                 alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarmTimeInMillis, pendingIntent);
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                Log.d("AlarmManager", "Alarm set for Android 14+");}
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // Use setExact for Android 6 to 13
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTimeInMillis, pendingIntent);
+                Log.d("AlarmManager", "Alarm set for Android 6-13");
             } else {
+                // Use set for older Android versions
                 alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTimeInMillis, pendingIntent);
+                Log.d("AlarmManager", "Alarm set for older Android versions");
             }
 
             // Show a Toast message indicating that the alarm is set

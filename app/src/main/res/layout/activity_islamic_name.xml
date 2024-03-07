@@ -26,6 +26,17 @@
           app:layout_collapseMode="pin"
           android:theme="@style/ToolbarStyle" />
 
+      <androidx.appcompat.widget.AppCompatTextView
+          android:id="@+id/tvTitle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:fontFamily="@font/biko_bold_700"
+          android:gravity="center"
+          android:text="ইসলামিক নাম"
+          android:textColor="@color/grey"
+          android:textSize="18dp" />
+
     </com.google.android.material.appbar.CollapsingToolbarLayout>
   </com.google.android.material.appbar.AppBarLayout>
 

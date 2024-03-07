@@ -10,17 +10,27 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class    AlarmReceiver extends BroadcastReceiver {
-    private Uri SOUND_URI;
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        SOUND_URI = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.custom);
+        Uri SOUND_URI = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.custom);
         String title = intent.getStringExtra("title");
         String content = intent.getStringExtra("content");
 
         Intent i = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_IMMUTABLE);
+
+
+        PendingIntent pendingIntent = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            pendingIntent = PendingIntent.getActivity
+                    (context, 0, i, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
+        }
+        else
+        {
+            pendingIntent = PendingIntent.getActivity
+                    (context, 0, i, PendingIntent.FLAG_IMMUTABLE);
+        }
 
 
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle()

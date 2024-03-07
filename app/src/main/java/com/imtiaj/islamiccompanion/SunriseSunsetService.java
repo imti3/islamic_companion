@@ -10,8 +10,8 @@ public interface SunriseSunsetService {
     Call<SunriseSunsetResponse> getSunriseSunset(
             @Path("date") String date,
             @Query("latitude") double latitude,
-            @Query("longitude") double longitude,
-            @Query("method") int calculationMethod
+            @Query("longitude") double longitude
+            //@Query("method") int calculationMethod
     );
 }
 

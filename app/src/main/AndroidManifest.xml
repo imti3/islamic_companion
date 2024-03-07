@@ -4,7 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- For scheduling exact alarms -->
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        android:maxSdkVersion="32"
+        />
+
 
     <!-- For using exact alarms -->
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
